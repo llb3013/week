@@ -1,0 +1,40 @@
+
+控制器
+<?php
+
+namespace App\Http\Controllers;
+
+use App\Goods1;
+use App\Http\Controllers\Controller;
+
+class Goods extends Controller
+{
+    /**
+     * 展示给定用户的信息。
+     *
+     * @param  int  $id
+     * @return Response
+     */
+    public function showGoods()
+    {
+        $goods=new Goods1();
+        $res=$goods->all();
+        return ['code'=>0,'msg'=>'查询成功','res'=>$res];
+
+    }
+}
+
+
+模型层
+<?php
+
+namespace App;
+
+use Illuminate\Database\Eloquent\Model;
+
+class Goods1 extends Model
+{
+    //
+    protected $table = 'goods';
+    public $timestamps = false;
+}
